@@ -1,0 +1,14 @@
+ARG DOCKER_IMAGE
+
+FROM ${DOCKER_IMAGE}
+
+ARG OOD_UID=3210
+ARG OOD_GID=3210
+
+RUN groupmod -g ${OOD_GID} ood || :
+RUN usermod -u ${OOD_UID} ood
+RUN usermod -G ${OOD_GID} ood
+
+COPY ./docker/ood_ssh_key.pub /home/ood/.ssh/ood_ssh_key.pub
+RUN cat /home/ood/.ssh/ood_ssh_key.pub >> /home/ood/.ssh/authorized_keys
+RUN chown -R ood:ood /home/ood/.ssh && chmod 0700 /home/ood/.ssh && chmod 0600 /home/ood/.ssh/*

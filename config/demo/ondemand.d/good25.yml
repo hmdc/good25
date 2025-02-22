@@ -1,0 +1,21 @@
+profiles:
+  good25:
+    dashboard_title: GOOD25
+    dashboard_header_img_logo: "/public/good25.png"
+
+    disable_dashboard_welcome_message: true
+
+    pinned_apps_group_by: "category"
+    pinned_apps:
+      - sys/RStudio
+      - sys/rdesktop
+
+    dashboard_layout:
+      rows:
+        - columns:
+            - width: 12
+              widgets:
+                - "cluster/partitions"
+                - "metrics/metrics"
+                - "pinned_apps"
+                - "motd"

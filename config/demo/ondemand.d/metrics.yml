@@ -1,0 +1,12 @@
+session_metrics_enabled: true
+custom_pages:
+  metrics:
+    rows:
+      - columns:
+          - width: 8
+            widgets:
+              - "help/metrics_help"
+          - width: 4
+            widgets:
+              - "metrics/metrics"
+              - "cluster/partitions"

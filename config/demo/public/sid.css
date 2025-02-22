@@ -1,0 +1,245 @@
+/** PAGE BODY WIDTH */
+body div.container-md {
+    width: 100%;
+    max-width: 1400px;
+}
+
+/** NAVBAR BACKGROUND ON SELECTED */
+#navbar > ul.navbar-nav > li.nav-item > a:focus, #navbar > ul.navbar-nav > li.nav-item.show > a {
+    color: #cccccc;
+    background-color: #3b3d3f;
+}
+
+/** TEXT COLOR FOR NAVIGATION LINKS */
+ul.navbar-nav li.show a {
+    color: #767676;
+}
+
+/** WELCOME MESSAGE **/
+.fasse-color {
+    color: #DA6027;
+}
+
+.cannon-color {
+    color: #009CD2;
+}
+
+.default-color {
+    color: #255A8E;
+}
+
+div.welcome-message {
+    padding: 40px 0;
+}
+
+div.welcome-message h2 {
+    font-size: 60px;
+    letter-spacing: 1px;
+    color: #DA6027;
+}
+
+div.welcome-message img {
+    width: 120px;
+    margin-top: -25px;
+}
+
+div.welcome-message span {
+    font-size: 20px;
+    font-weight: normal;
+    white-space: nowrap;
+    vertical-align: 2px;
+}
+
+@media (max-width: 1300px) {
+    div.welcome-message span {
+        display: block;
+    }
+}
+
+@media (max-width: 620px) {
+    div.welcome-message h2 {
+        font-size: 40px;
+    }
+
+    div.welcome-message span {
+        font-size: 14px;
+    }
+}
+
+/** PINNED APPS BREAKPOINTS **/
+
+@media (min-width: 676px) {
+    div.row div.app-launcher-container, div.quick-link-container {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 850px) {
+    div.row div.app-launcher-container, div.quick-link-container {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+}
+
+@media (min-width: 1200px) {
+    div.row div.app-launcher-container, div.quick-link-container {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+/** PINNED APPS **/
+.row h3 {
+    padding-bottom: 1rem;
+    color: #808080;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+div.app-launcher-container .launcher-click p {
+    margin: 0;
+    padding-left: 10px;
+    text-align: left;
+}
+
+div.app-launcher-container .launcher-click div.mt-2.mb-1 {
+    margin-top: 0 !important;
+}
+
+div.app-launcher-container .launcher-click p.app-title {
+    margin-top: 10px;
+}
+
+/** QUICK LINKS **/
+.quick-link {
+    position: relative;
+}
+div.quick-link-header-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 160px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+div.quick-link-header-text {
+    padding-top: 40px;
+    margin-bottom: 30px;
+    min-height: 185px;
+}
+
+div.quick-link-header-text p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+div.quick-link-header-text .quick-link-header-title.fasse {
+    font-size: 26px;
+    color: #DA6027;
+}
+
+div.quick-link-header-text .quick-link-header-title.cannon {
+    font-size: 26px;
+    color: #2D9BF0;
+}
+
+div.quick-link-header-image i {
+    font-size: 90px;
+    color: rgb(128, 128, 128);
+}
+
+div.quick-link-header-image img {
+    height: 140px;
+    margin: 0;
+}
+
+div.quick-link-header-image span {
+    padding-top: 1rem;
+    padding-left: 10px;
+}
+
+div.quick-link-text {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+div.quick-link-text p {
+    margin: 0;
+}
+
+div.quick-link-text .small-text {
+    font-size: 14px;
+    font-weight: 300;
+}
+
+/** QUICK LINKS BORDERS */
+.launcher-click.fasse {
+    border-color: #DA6027;
+}
+
+.launcher-click.cannon {
+    border-color: #2D9BF0;
+}
+
+/** DOCUMENTATION **/
+#docs-container {
+    display: flex;
+    justify-content: center;
+    background-color: #F0F0F0;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-top: 2rem;
+}
+
+#docs-container .content {
+    width: 100%;
+    max-width: 1380px;
+}
+
+#docs-container .docs-sections-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+#docs-container section {
+    width: 100%;
+}
+
+#docs-container h2 {
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    padding: 0 5px;
+}
+
+#docs-container h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #DA6027;
+    letter-spacing: 0.5px;
+}
+
+#docs-container .docs-footer {
+    font-style: italic;
+}
+
+#docs-container .status-iframe {
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid rgb(192, 192, 192);
+    border-radius: 10px;
+    overflow: hidden;
+}

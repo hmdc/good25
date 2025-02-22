@@ -1,0 +1,54 @@
+project_size_timeout: 10
+project_size_enabled: true
+host_based_profiles: false
+disable_dashboard_logo: false
+pinned_apps_group_by:
+show_all_apps_link: false
+jobs_app_alpha: true
+bc_dynamic_js: true
+bc_saved_settings: false
+cancel_session_enabled: true
+bc_sessions_poll_delay: 900000
+status_poll_delay: 900000
+metrics_enabled: true
+widget_partials_enabled: true
+
+navbar_type: dark
+
+default_profile: good25
+
+globus_endpoints:
+  - path: "/home"
+    endpoint: "716de4ac-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    endpoint_path: "/home"
+
+  - path: "/var/www/ood/apps/sys/dataverse"
+    endpoint: "9f1fe759-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    endpoint_path: "/demo/dataverse"
+
+help_menu:
+  - group: "Metrics"
+  - title: "Metrics"
+    icon: "fas://chart-bar"
+    page: "metrics"
+  - group: "Docs"
+  - title: "Documentation"
+    icon: "fas://book"
+    page: "docs"
+  - group: "Interface"
+  - title: "RESET"
+    profile: ""
+    icon: "fas://user"
+  - title: "GOOD25"
+    profile: "good25"
+    icon: "/public/ondemand_icon.png"
+  - title: "Sid"
+    profile: "sid"
+    icon: "/public/sid_logo.png"
+
+
+dashboard_layout:
+  rows:
+    - columns:
+        - width: 12
+          widgets:

@@ -1,0 +1,11 @@
+support_ticket:
+  description: |
+    Send a support ticket using this form.
+  email:
+    to: "good25@example.com"
+    delivery_method: "smtp"
+    delivery_settings:
+      address: "smtp"
+      port: "25"
+      open_timeout: 10
+      read_timeout: 10

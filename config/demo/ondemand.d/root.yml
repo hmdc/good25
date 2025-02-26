@@ -15,7 +15,7 @@ widget_partials_enabled: true
 
 navbar_type: dark
 
-default_profile: good25
+#default_profile: good25
 
 globus_endpoints:
   - path: "/home"
@@ -42,6 +42,9 @@ help_menu:
   - title: "GOOD25"
     profile: "good25"
     icon: "/public/ondemand_icon.png"
+  - title: "IQSS"
+    profile: "iqss"
+    icon: "/public/iqss_icon.png"
   - title: "Sid"
     profile: "sid"
     icon: "/public/sid_logo.png"

@@ -1,21 +1,25 @@
 profiles:
   good25:
-    dashboard_title: GOOD25
-    dashboard_header_img_logo: "/public/good25.png"
+    #dashboard_title: GOOD25
+    #dashboard_header_img_logo: "/public/good25.png"
+    #brand_bg_color: "#000000"
+    #dashboard_logo: "/public/good.png"
 
-    disable_dashboard_welcome_message: true
+    #disable_dashboard_welcome_message: false
 
-    pinned_apps_group_by: "category"
-    pinned_apps:
-      - sys/RStudio
-      - sys/rdesktop
 
-    dashboard_layout:
+    dashboard_layout_demo:
       rows:
         - columns:
             - width: 12
               widgets:
-                - "cluster/partitions"
-                - "metrics/metrics"
                 - "pinned_apps"
                 - "motd"
+
+    motd_path_demo: "/var/www/ood/public/motd/good25.md"
+    pinned_apps_group_by: "category"
+    pinned_apps_demo:
+      - sys/RStudio
+      - sys/rdesktop
+
+    help_menu_demo: []

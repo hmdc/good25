@@ -1,0 +1,29 @@
+profiles:
+  iqss:
+    show_all_apps_link: false
+    navbar_type: default
+
+    dashboard_title: "IQSS Research Computing"
+    dashboard_header_img_logo: "/public/iqss_logo.png"
+    brand_bg_color: "#F7FAFC"
+    dashboard_logo: "/public/iqss_logo.png"
+
+    disable_dashboard_welcome_message: true
+
+
+    dashboard_layout:
+      rows:
+        - columns:
+            - width: 12
+              widgets:
+                - "pinned_apps"
+                - "motd"
+
+    motd_path: "/var/www/ood/public/motd/iqss.md"
+    motd_title: "Harvard Institute for Quantitative Social Science"
+    pinned_apps_group_by: "category"
+    pinned_apps_demo:
+      - sys/RStudio
+      - sys/rdesktop
+
+    help_menu_demo: []

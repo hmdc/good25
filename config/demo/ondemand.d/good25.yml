@@ -6,6 +6,8 @@ profiles:
     #dashboard_logo: "/public/good.png"
 
     #disable_dashboard_welcome_message: false
+    developer_docs_url: "https://www.conference2025.openondemand.org/about"
+    dashboard.nav_develop_docs: "Good25 Developer Docs"
 
 
     dashboard_layout_demo:

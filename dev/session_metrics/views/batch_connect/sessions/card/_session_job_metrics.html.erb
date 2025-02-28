@@ -1,0 +1,87 @@
+<%
+  metrics_helper = SlurmMetrics::MetricsHelper.new
+%>
+<hr>
+
+<% unless metrics_helper.metrics_waiting_elapsed(session.completed_at) %>
+  <p class="metrics-waiting">
+    <strong>Job Efficiency: </strong>
+    Waiting for Slurm to calculate metrics ...
+  </p>
+<% else %>
+  <%
+    metrics_service = SlurmMetrics::SessionMetricsService.new
+    session_metrics = metrics_service.read_job_metrics(session)
+    state = session_metrics.state
+    job_metrics = session_metrics.metrics
+    metric_details_id = "m_#{session.id}"
+  %>
+  <div class="job-metrics">
+    <p class="job-metrics-description" data-toggle="collapse" data-target="#<%= metric_details_id %>" data-bs-toggle="collapse" data-bs-target="#<%= metric_details_id %>" data-session-id="<%= session.id %>" aria-expanded="false">
+      <i class="fa fa-plus fa-fw app-icon closed" aria-hidden="true"></i>
+      <i class="fa fa-minus fa-fw app-icon open" aria-hidden="true"></i>
+      <strong>Job Efficiency: </strong>
+      <% if session_metrics.empty? %>
+        No metrics available for job: <%= session.job_id %>
+      <% else %>
+        <span class="badge bg-light text-dark" title="">CPU <%= job_metrics.ave_cpu_eff.ceil(1) %>%</span>
+        <span class="card-text"> | </span>
+        <span class="badge bg-light text-dark" title="">Memory <%= job_metrics.ave_mem_eff.ceil(1) %>%</span>
+        <span class="card-text"> | </span>
+        <span class="badge bg-light text-dark" title="">Time <%= job_metrics.ave_time_eff.ceil(1) %>%</span>
+      <% end %>
+
+    </p>
+
+    <div class="job-metric-details">
+      <div id="<%= metric_details_id %>" class="collapse" data-session-id="<%= session.id %>">
+
+        <table class="table table-sm table-striped table-condensed metrics">
+          <thead>
+          <tr>
+            <th class="fs-5">Metrics</th>
+            <th title="">Efficiency</th>
+            <th title="">Allocated</th>
+            <th title="">Used</th>
+            <th title="">Other</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>CPU</td>
+            <td><%= metrics_helper.efficiency_icon(job_metrics.ave_cpu_eff).html_safe %><%= job_metrics.ave_cpu_eff.ceil(2) %>%</td>
+            <td><%= "#{job_metrics.ave_cpu_req.ceil(2)} CPU Hrs" %></td>
+            <td><%= "#{job_metrics.ave_cpu_use.ceil(2)} CPU Hrs" %></td>
+            <td>Walltime <%= "#{job_metrics.tot_cpu_walltime.ceil(2)} CPU Hrs" %></td>
+          </tr>
+          <tr>
+            <td>Memory</td>
+            <td><%= metrics_helper.efficiency_icon(job_metrics.ave_mem_eff).html_safe %><%= job_metrics.ave_mem_eff.ceil(2) %>%</td>
+            <td><%= "#{job_metrics.ave_mem_req.ceil(2)}G" %></td>
+            <td><%= "#{job_metrics.ave_mem_use.ceil(2)}G" %></td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td><%= metrics_helper.efficiency_icon(job_metrics.ave_time_eff).html_safe %><%= job_metrics.ave_time_eff.ceil(2) %>%</td>
+            <td><%= metrics_helper.format_duration(job_metrics.ave_time_req) %></td>
+            <td><%= metrics_helper.format_duration(job_metrics.ave_time_use) %></td>
+            <td>Waiting Time <%= metrics_helper.format_duration(job_metrics.ave_wait_time) %></td>
+          </tr>
+          <tr>
+            <td>GPU</td>
+            <td>N/A</td>
+            <td><%= "#{job_metrics.ave_gpu_req.ceil(2)} GPU Hrs" %></td>
+            <td>N/A</td>
+            <td>Walltime <%= "#{job_metrics.tot_gpu_hours.ceil(2)} GPU Hrs" %></td>
+          </tr>
+          </tbody>
+        </table>
+
+        <strong>Slurm Exit status: </strong><%= state %>
+
+      </div>
+    </div>
+
+  </div>
+<% end %>

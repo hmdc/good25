@@ -1,0 +1,63 @@
+<script>
+  // TESTED WITH OOD 4.0
+  // OVERRIDE OOD replaceHTML FUNCTION TO INTERCEPT THE AJAX RESPONSE FOR THE SESSION CARDS.
+  // WE WANT TO KEEP THE METRICS COLLAPSABLE STATE BETWEEN AJAX REFRESH
+  const originalFunction = window.replaceHTML;
+  const metricsCollapseState = {};
+
+  window.replaceHTML = function(id, html) {
+    const ele = document.getElementById(id);
+
+    if(ele == null) {
+      return;
+    }
+
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    const sessionCards = tmp.querySelector('template');
+
+    // UPDATE COLLAPSABLE ITEMS
+    sessionCards.content.querySelectorAll('.job-metric-details .collapse').forEach((element) => {
+      const jobMetricsId = element.dataset.sessionId;
+      const isOpen = metricsCollapseState[jobMetricsId];
+
+      if (isOpen) {
+        element.classList.remove('collapse');
+        element.classList.add('show');
+      }
+    });
+
+    // UPDATE BUTTONS
+    sessionCards.content.querySelectorAll('.job-metrics-description').forEach((element) => {
+      const jobMetricsId = element.dataset.sessionId;
+      const isOpen = metricsCollapseState[jobMetricsId];
+
+      if (isOpen) {
+        element.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    const updatedSessionCards = sessionCards.innerHTML;
+    tmp.remove();
+
+    setInnerHTML(ele, updatedSessionCards);
+  };
+
+  // LISTEN TO BOOTSTRAP COLLAPSABLE OPEN AND CLOSE EVENTS
+  jQuery(function (){
+    $('#batch_connect_sessions').on('hide.bs.collapse', function (element) {
+      // ENSURE IS ONE OF THE METRICS COLLAPSABLE
+      if (element.target.dataset.sessionId) {
+        metricsCollapseState[element.target.dataset.sessionId] = false;
+      }
+    })
+
+    $('#batch_connect_sessions').on('show.bs.collapse', function (element) {
+      // ENSURE IS ONE OF THE METRICS COLLAPSABLE
+      if (element.target.dataset.sessionId) {
+        metricsCollapseState[element.target.dataset.sessionId] = true;
+      }
+    })
+  });
+
+</script>

@@ -1,0 +1,42 @@
+<footer class="d-flex flex-column flex-md-row m-0 justify-content-between align-items-center p-0">
+  <div class="p-4">
+    <%= link_to "https://openondemand.org" do %>
+      <%= image_tag(
+            "OpenOnDemand_powered_by_RGB.svg",
+            class: "footer-logo img-responsive center-block",
+            alt: "Powered by Open OnDemand",
+            height: "40",
+            style: "margin-bottom: 20px; max-height: 40px;"
+          ) %>
+    <% end %>
+  </div>
+  <div class="p-4">
+    <%= link_to "https://www.iq.harvard.edu/" do %>
+      <%= content_tag(
+            :img,
+            "",
+            src: "/public/iqss_logo.png",
+            class: "footer-logo img-responsive center-block",
+            alt: "IQSS",
+            height: "40",
+            style: "max-height: 40px;"
+          ) %>
+    <% end %>
+  </div>
+  <div class="p-4">
+    <%= link_to "https://rcood.rc.fas.harvard.edu/pun/sys/dashboard" do %>
+      <%= content_tag(
+            :img,
+            "",
+            src: "/public/fasrc_logo.jpg",
+            class: "footer-logo img-responsive center-block",
+            alt: "FASRC",
+            height: "40",
+            style: "max-height: 40px;"
+          ) %>
+    <% end %>
+  </div>
+  <div class="p-4">
+    <span class="footer_version">OnDemand version: 4.0.2</span>
+  </div>
+</footer>

@@ -1,0 +1,22 @@
+<%- # THIS A VERBATIM COPY OF THE ORIGINAL FILE => THIS FILE OVERRIDE IS ONLY REQUIRED FOR OODv3.x -%>
+(function() {
+  var sessions = [];
+  var $target;
+
+  <%# Replace sessions whose state has changed %>
+  <% @sessions.each do |session| %>
+  sessions.push('<%= session.id %>');
+  $target = $('#id_<%= session.id %>');
+  $metricsWaiting = $target.find('p.metrics-waiting')
+  if ( $target.data('hash') !== '<%= session.to_hash %>' || $metricsWaiting.length ) {
+    $target.replaceWith('<%= j render(partial: "panel", locals: { session: session }) %>');
+  }
+  <% end %>
+
+  <%# Remove sessions that don't exist anymore %>
+  $('.session-panel').each(function () {
+    if ( $.inArray($(this).attr('data-id'), sessions) < 0 ) {
+      $(this).remove();
+    }
+  });
+})();

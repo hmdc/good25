@@ -1,0 +1,6 @@
+<%
+  payload = request.request_parameters.deep_symbolize_keys
+  Favorites::FavoriteSessionService.new.add_favorite(payload[:session_id]) if payload[:session_id]
+  result = { message: 'session added' }
+%>
+<%= payload.to_json.html_safe %>

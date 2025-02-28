@@ -1,0 +1,78 @@
+<%
+  #CUSTOM TEMPLATE FOR THE SESSION INDEX
+
+%>
+<script>
+  const app_root = document.getElementById('ood_config').dataset['rootPath'] || '/pun/sys/dashboard/'
+  function displayFavorites() {
+    fetch(`${app_root}widgets/favorites`)
+      .then(response => response.text())
+      .then(html => {
+        $('#favorites-menu').replaceWith(html);
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+      })
+  }
+
+  function addSession(event) {
+    //SHOW FULL PAGE SPINNER
+    $("body").addClass("modal-open");
+    $("#full-page-spinner").removeClass('d-none');
+    const sessionId = event.currentTarget.getAttribute("data-session");
+    fetch(`${app_root}widgets/add_favorite`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      },
+      body: JSON.stringify({ session_id: sessionId })
+    })
+      .then(response => response.json()) // Parse JSON response
+      .then(data => {
+        displayFavorites()
+        console.log("Success:", data)
+      })
+      .catch(error => console.error("Error:", error))
+      .finally(() => {
+        $("#full-page-spinner").addClass('d-none');
+        $("body").removeClass("modal-open");
+      });
+  }
+
+
+  jQuery(function (){
+    $(document).on('click', 'a.favorites', function(event) {
+      addSession(event)
+    });
+  });
+</script>
+<style>
+    a.favorites {
+        color: rgb(83, 86, 90);
+        opacity: 0.4;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        background-color: transparent;
+    }
+
+    a.favorites:hover {
+        border-color: rgba(0, 0, 0, 0.125);
+        color: #ffc107;
+        opacity: 1;
+    }
+
+    a.favorites.active {
+        color: #ffc107;
+        opacity: 1;
+    }
+
+    a.favorites.active:hover {
+        color: rgb(83, 86, 90);
+    }
+
+    .sessions-favorites i {
+        color: #ffc107;
+    }
+</style>
+<%= render template: 'batch_connect/sessions/index', locals: local_assigns %>

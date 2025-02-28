@@ -1,0 +1,17 @@
+<%
+  title = 'Add to favorites'
+  active_class = 'active'
+%>
+<%=
+  link_to(
+    'javascript:void(0)',
+    class: %w[mr-1 favorites] + [active_class],
+    form_class: %w[d-inline favorites],
+    title: title,
+    'aria-label': title,
+    data: { toggle: "tooltip", placement: "left", session: session.id },
+    params: {session_id: session.id}
+  ) do
+    "#{fa_icon('star', classes: nil, title: '')}".html_safe
+  end
+%>

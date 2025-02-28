@@ -4,10 +4,11 @@ all:: start_ood
 
 OOD_UID := $(shell id -u)
 OOD_GID := $(shell id -g)
-SID_OOD_IMAGE := hmdc/sid-ood:ood-4.0.2.el8
-SID_SLURM_IMAGE := hmdc/sid-slurm:v3-slurm-21-08-6-1
+DEMO_OOD_IMAGE := hmdc/sid-ood:ood-good25.el8
+DEMO_SLURM_IMAGE := hmdc/sid-slurm:v3-slurm-21-08-6-1
+PLUGINS_DIR := ./plugins
 
-ENV := env SID_SLURM_IMAGE=$(SID_SLURM_IMAGE) SID_OOD_IMAGE=$(SID_OOD_IMAGE) OOD_UID=$(OOD_UID) OOD_GID=$(OOD_GID)
+ENV := env DEMO_SLURM_IMAGE=$(DEMO_SLURM_IMAGE) DEMO_OOD_IMAGE=$(DEMO_OOD_IMAGE) OOD_UID=$(OOD_UID) OOD_GID=$(OOD_GID)
 
 start_ood: stop_ood
 	$(ENV) docker compose up --build || :
@@ -15,10 +16,19 @@ start_ood: stop_ood
 stop_ood:
 	$(ENV) docker compose down -v || :
 
-clean:
-	rm -rf ./ondemand/apps/dashboard/data
-	rm -rf ./ondemand/apps/dashboard/node_modules
-	rm -rf ./ondemand/apps/dashboard/vendor/bundle
-	rm -rf ./ondemand/apps/dashboard/app_overrides
-	rm -rf ./ondemand/apps/dashboard/plugins
-	rm -rf ./ondemand/apps/dashboard/.env*
+clean: clean_plugins
+	rm -rf ./data
+
+clean_plugins:
+	rm -rf ./plugins/*/
+
+install_code: clean_plugins
+	cp -r ./dev/customizations_through_code $(PLUGINS_DIR)
+
+install_widgets: clean_plugins
+	cp -r ./dev/widget_partials $(PLUGINS_DIR)
+
+install_metrics: clean_plugins
+	cp -r ./dev/metrics $(PLUGINS_DIR)
+	cp -r ./dev/session_metrics $(PLUGINS_DIR)
+

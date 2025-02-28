@@ -1,0 +1,19 @@
+<%
+  sessions = Favorites::FavoriteSessionService.new.read_favorite_sessions
+%>
+  <div id="favorites-menu" class="card system-and-shared-apps-header">
+    <div class="card-header">Favorites</div>
+    <div class="list-group list-group-flush">
+      <% if sessions.empty? %>
+        <span class="list-group-item list-group-item-action">
+          You have no favorites
+        </span>
+      <% end %>
+      <% sessions.each_with_index do | session, index|
+      %>
+        <p class="list-group-item mb-0 header">
+          <%= session %>
+        </p>
+      <% end %>
+    </div>
+  </div>

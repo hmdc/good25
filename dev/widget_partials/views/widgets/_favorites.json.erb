@@ -1,0 +1,4 @@
+<%
+  sessions = Favorites::FavoriteSessionService.new.read_favorite_sessions
+%>
+<%= sessions.to_json.html_safe %>

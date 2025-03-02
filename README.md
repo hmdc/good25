@@ -24,6 +24,9 @@ The configuration for the OOD Demo application can be found under [./config/demo
 The Demo has been customized to dynamically load configuration changes to facilitate development and trying new features. No application restart required.
 
 ### Announcements
+The demo OOD application has been configured to use the local folder [./config/demo/public/announcements](./config/demo/public/announcements) to load announcements.
+
+For more information on announcements, see the [OOD documentation](https://osc.github.io/ood-documentation/latest/customizations.html#announcements)
 
 ## Widgets Partials
 

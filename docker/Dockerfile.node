@@ -1,4 +1,4 @@
-ARG DOCKER_IMAGE
+ARG DOCKER_IMAGE=hmdc/sid-slurm:v3-slurm-21-08-6-1
 
 FROM ${DOCKER_IMAGE}
 

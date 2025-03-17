@@ -19,6 +19,7 @@ profiles:
                 - "motd"
 
     motd_path_demo: "/var/www/ood/public/motd/good25.md"
+    motd_title: "GOOD | 2025 Conference Demo"
     pinned_apps_group_by: "category"
     pinned_apps_demo:
       - sys/RStudio

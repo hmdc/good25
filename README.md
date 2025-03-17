@@ -42,8 +42,8 @@ The partial implementation uses Widgets Partials to handle some of its functiona
 To install "Favorite Sessions" run:
 ```
 make install_widgets
-restart your dashboard to load new code
-help > Restart Webserver
+# restart your dashboard to load new code
+# help > Restart Webserver
 ```
 
 ### How to Review

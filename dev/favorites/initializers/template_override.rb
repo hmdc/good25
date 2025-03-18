@@ -4,7 +4,7 @@
 #
 # When overriding a template, if you add the _custom to the original name of the template, it will use this file for the content.
 # Only works for templates that are render from a controller. Any render partials will not trigger this logic.
-# Sample: ./dev/widget_partials/views/batch_content/sessions/index_custom.html.erb
+# Sample: ./dev/favorites/views/batch_content/sessions/index_custom.html.erb
 #
 module CustomTemplateOverride
   def render(*args, **kwargs, &block)

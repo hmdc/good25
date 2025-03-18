@@ -23,10 +23,10 @@ clean_plugins:
 	rm -rf ./plugins/*/
 
 install_code: clean_plugins
-	cp -r ./dev/customizations_through_code $(PLUGINS_DIR)
+	cp -r ./dev/samples $(PLUGINS_DIR)
 
 install_widgets: clean_plugins
-	cp -r ./dev/widget_partials $(PLUGINS_DIR)
+	cp -r ./dev/favorites $(PLUGINS_DIR)
 
 install_metrics: clean_plugins
 	cp -r ./dev/metrics $(PLUGINS_DIR)

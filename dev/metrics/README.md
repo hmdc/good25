@@ -19,26 +19,9 @@ The implementation consist of three components
 - ./views/widgets/metrics
 
 ### Deployment
-Using the new plugins feature from OnDemand, with the default location under: `/etc/ood/config/plugins`
-- copy the `cluster` folder into `/etc/ood/config/plugins`
-
-Add the metrics widget to the home page or to a new custom page, example in the [metrics.yml](metrics.yml) file
-
+Using the customization feature from OnDemand, with the default location under: `/etc/ood/config/apps/dashboard`
+- copy `./initializers/slurm_extension.rb` into `/etc/ood/config/apps/dashboard/intializers`
+- copy `./lib/slurm_metrics` folder into `/etc/ood/config/apps/dashboard/lib`
+- copy `./views/widgets` folder into `/etc/ood/config/apps/dashboard/views`
 
 Restart the OnDemand application for the customizations to take effect.
-
-### Deployment With FASRC Puppet
-The widget components need to be deployed using FASRC Puppet control repo. We are already using the OOD Puppet module feature to add files to the OOD dashboard location to add/extend functionality:
-`openondemand::apps_config_source:`
-
-The folder that we are deploying is: `site-modules/profile/files/openondemand/common/apps_config`
-
-In the Puppet control repo, we need to add the files for the three components to the following folders:
-- site-modules/profile/files/openondemand/common/apps_config/dashboard/intializers
-- site-modules/profile/files/openondemand/common/apps_config/dashboard/lib
-- site-modules/profile/files/openondemand/common/apps_config/dashboard/views/widgets
-
-To review and test the new widget, we could use a custom page to display it. This is a sample configuration:
-https://github.com/hmdc/ondemand_development/blob/main/dev/metrics/metrics.yml
-
-This will create a custom page under: `/pun/sys/dashboard/custom/metrics

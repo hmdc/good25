@@ -17,16 +17,18 @@ stop_ood:
 	$(ENV) docker compose down -v || :
 
 clean: clean_plugins
-	rm -rf ./data
 
 clean_plugins:
 	rm -rf ./plugins/*/
 
-install_code: clean_plugins
+install_samples: clean_plugins
 	cp -r ./dev/samples $(PLUGINS_DIR)
 
-install_widgets: clean_plugins
+install_favorites: clean_plugins
 	cp -r ./dev/favorites $(PLUGINS_DIR)
+
+install_partitions: clean_plugins
+	cp -r ./dev/cluster $(PLUGINS_DIR)
 
 install_metrics: clean_plugins
 	cp -r ./dev/metrics $(PLUGINS_DIR)

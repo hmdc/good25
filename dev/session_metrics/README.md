@@ -17,6 +17,6 @@ For OODv3.x, the version that we currently have in production, we need to use 2 
 ### Deployment
 Using the customization feature from OnDemand, with the default location under: `/etc/ood/config/apps/dashboard`
  - copy `./initializers/session_helper_extension.rb` into `/etc/ood/config/apps/dashboard/intializers`
- - copy `./views/batch_connect` into `/etc/ood/config/apps/dashboard/views`
+ - copy `./views/batch_connect` folder into `/etc/ood/config/apps/dashboard/views`
 
 Restart the OnDemand application for the customizations to take effect.

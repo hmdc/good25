@@ -6,4 +6,10 @@ custom_pages:
           - width: 8
             widgets:
               - "metrics/metrics"
+  partition:
+    rows:
+      - columns:
+          - width: 8
+            widgets:
+              - "cluster/partitions"
 

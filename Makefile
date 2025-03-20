@@ -34,3 +34,6 @@ install_metrics: clean_plugins
 	cp -r ./dev/metrics $(PLUGINS_DIR)
 	cp -r ./dev/session_metrics $(PLUGINS_DIR)
 
+install_all: clean_plugins
+	cp -r ./dev/* $(PLUGINS_DIR)
+

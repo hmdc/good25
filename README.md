@@ -1,5 +1,5 @@
 # IQSS Research Computing - GOOD25
-Demo project with a local environment with OODv4.0.2 and a Slurm cluster.
+Demo project with a local environment with OODv4.0.2-nightly and a Slurm cluster.
 
 This project will be use to share some of the plugins that the IQSS Research Computing team at Harvard has developed.
 
@@ -71,6 +71,9 @@ Payload: { "session_id": "fb3ef806-078c-463a-957b-392e79d11980" }
 
 ## Plugins
 All the customizations implemented in this project have been built using OnDemand plugins.
+
+Note: The plugins feature is already in the OnDeman main codebase, but it has not been released.
+It will go into OODv4.0.2 or OODv4.1.0 - whatever comes next.
 
 All the plugins are organized in the [./dev](./dev) folder. Plugins are deployed manually using make commands to help with the demo for GOOD25.
 
